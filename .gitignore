@@ -1,0 +1,6 @@
+secrets/
+__pycache__/
+.pytest_cache/
+Pipfile
+Pipfile.lock
+*.egg-info/

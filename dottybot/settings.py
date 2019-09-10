@@ -1,0 +1,5 @@
+DEBUG = True
+
+MAX_EMOJIS = 2
+
+MAX_SIZE = 60

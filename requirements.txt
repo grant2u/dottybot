@@ -1,0 +1,4 @@
+pillow==6.1.0
+discord==1.0.1
+numpy==1.17.0
+json-logging==1.0.3
