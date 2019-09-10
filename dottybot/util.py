@@ -62,8 +62,9 @@ def convert_image(source, size):
 
 
 def convert_images(sources):
-    size = int(MAX_SIZE / len(sources))
-    return " ".join([convert_image(s, size) for s in sources])
+    if sources:
+        size = int(MAX_SIZE / len(sources))
+        return " ".join([convert_image(s, size) for s in sources])
 
 
 async def fetch_emoji_old(url, loop):
@@ -82,5 +83,6 @@ async def fetch(session, url):
 
 async def fetch_all(urls, loop):
     async with aiohttp.ClientSession(loop=loop) as session:
-        results = await gather(*[fetch(session, u) for u in urls], return_exceptions=True)
+        results = await gather(*[fetch(session, u) for u in urls],
+                               return_exceptions=True)
         return results

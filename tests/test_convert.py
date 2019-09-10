@@ -34,9 +34,18 @@ wowee = """
 """
 
 
-def test_convert():
-    from PIL import Image
-    from dottybot.util import tobraille
+def test_convert_one(event_loop):
+    from dottybot.util import fetch_all, convert_images
+    urls = ['https://cdn.discordapp.com/emojis/616413233179394162.png']
+    images = event_loop.run_until_complete(fetch_all(urls, event_loop))
+    result = convert_images(images)
+    assert result
 
-    img = Image.open('wowee.png')
-    assert wowee.strip() == tobraille(img, 60).strip()
+
+def test_convert_two(event_loop):
+    from dottybot.util import fetch_all, convert_images
+    urls = ['https://cdn.discordapp.com/emojis/616413233179394162.png',
+            'https://cdn.discordapp.com/emojis/486036787421118474.gif']
+    images = event_loop.run_until_complete(fetch_all(urls, event_loop))
+    result = convert_images(images)
+    assert result

@@ -1,8 +1,7 @@
-import json
 import setuptools
 
-with open('config.json', 'r') as fh:
-    version = json.load(fh)['version']
+with open('VERSION', 'r') as fh:
+    version = fh.read().strip()
 
 with open('requirements.txt', 'r') as fh:
     install_requires = fh.readlines()
